@@ -1,0 +1,25 @@
+.container-loading{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle{
+    width: 70px;
+    height: 70px;
+    background: transparent;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    border-top-color: #1E1E1F;
+    animation: animeLoading 1s infinite forwards;
+}
+
+@keyframes animeLoading {
+    from {
+        transform: rotate(-1turn);
+    }
+}
