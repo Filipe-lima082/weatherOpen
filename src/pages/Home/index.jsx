@@ -1,20 +1,23 @@
 import { useState, useEffect, Fragment } from "react";
 import IconSearch from "../../assets/icons/icon-search.svg";
 import Loading from "../../components/Loading/";
-import {Body, Form, CityTemp, DetailsContainer, Details, ModalError} from './style'
+import {
+  Body,
+  Form,
+  CityTemp,
+  DetailsContainer,
+  Details,
+  ModalError,
+} from "./style";
+import { API_KEY } from "../../config/API_KEY";
 
 const index = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState(null);
   const [input, setInput] = useState("Sao paulo");
-  const statusError = {
-    error: false
-  }
 
-  const API_KEY = "4cc6b6ea21ff8293eadc70948a4b281b";
   const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?q=${input}&lang=pt_br&appid=${API_KEY}&units=metric`;
-
 
   useEffect(() => {
     async function fetchWeather() {
@@ -22,18 +25,19 @@ const index = () => {
       let data;
 
       try {
-        setError(false)
+        setError(false);
         setLoading(true);
         response = await fetch(BASE_URL);
         data = await response.json();
       } catch (error) {
         data = null;
       } finally {
-        if(response.status === 400 || response.status === 404){
-          setError(true)
+        if (response.status === 400 || response.status === 404) {
+          setError(true);
         }
-        const { main, name, weather } = data;
+        const { main, name, weather, sys } = data;
         const dataCity = {
+          country: sys.country,
           main,
           cityName: name,
           weather,
@@ -51,12 +55,13 @@ const index = () => {
     setInput(inputValue);
   }
 
-  if(error) return (
-    <ModalError>
-      <p>Cidade não encontrada. Informe uma cidade válida.</p>
-      <a href="/">Tentar Novamente</a>
-    </ModalError>
-  )
+  if (error)
+    return (
+      <ModalError>
+        <p>Cidade não encontrada. Informe uma cidade válida.</p>
+        <a href="/">Tentar Novamente</a>
+      </ModalError>
+    );
 
   if (loading) return <Loading />;
   return (
@@ -76,7 +81,9 @@ const index = () => {
 
           <CityTemp>
             <div>
-              <p>{data.cityName}</p>
+              <p>
+                {data.cityName}, {data.country}
+              </p>
               <span>
                 {data.main.temp.toFixed()} <sup>°C</sup>
               </span>
@@ -85,7 +92,7 @@ const index = () => {
           </CityTemp>
 
           <DetailsContainer>
-            <Details >
+            <Details>
               <div className="details_item">
                 <span>
                   {" "}

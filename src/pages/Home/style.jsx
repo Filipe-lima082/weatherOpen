@@ -5,7 +5,7 @@ export const Body = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  height: 95vh;
   animation: enterAnime 0.3s forwards;
 
   @keyframes enterAnime {
@@ -29,6 +29,17 @@ export const Form = styled.form`
   margin-bottom: 95px;
   filter: drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.25));
 
+  button,
+  input {
+    color: #fff;
+    font-size: 1.6rem;
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    outline: none;
+    border: 2px solid #fff;
+  }
+
   input {
     width: 100%;
     border-top-left-radius: 6px;
@@ -41,17 +52,6 @@ export const Form = styled.form`
     font-weight: 500;
   }
 
-  button,
-  input {
-    color: #fff;
-    font-size: 1.6rem;
-    padding: 12px 16px;
-    border: none;
-    background: none;
-    outline: none;
-    border: 2px solid #fff;
-  }
-
   button {
     border-left: none;
     border-top-right-radius: 6px;
@@ -59,6 +59,26 @@ export const Form = styled.form`
     display: flex;
     align-items: center;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: min(60%, 300px);
+
+    input {
+      font-size: 1.4rem;
+      width: 100%;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
+
+    button {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+
+    button img {
+      width: 24px;
+    }
   }
 `;
 
@@ -72,12 +92,12 @@ export const CityTemp = styled.div`
 
   p {
     letter-spacing: 0.2rem;
-    font-size: 2.4rem;
+    font-size: 1.8rem;
     color: #fff;
   }
 
   span {
-    font-size: 5.6rem;
+    font-size: 5rem;
     line-height: 1;
     font-weight: 800;
     color: #fff;
@@ -93,6 +113,11 @@ export const DetailsContainer = styled.div`
   width: min(40%, 560px);
   margin: 0 auto;
   border-radius: 6px;
+
+  @media screen and (max-width: 767px) {
+    width: min(50%, 300px);
+    padding: 0 10px;
+  }
 `;
 
 export const Details = styled.div`
@@ -118,44 +143,54 @@ export const Details = styled.div`
     font-size: 1.6rem;
     font-weight: 300;
   }
+
+  @media screen and (max-width: 767px) {
+    padding: 1rem;
+    overflow-y: scroll;
+    .details_item span {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .details_item p {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+  }
 `;
 
-
 export const ModalError = styled.div`
-      width: 100%;
-    height: 100vh;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    p{
-      text-align: center;
+  p {
+    text-align: center;
     font-size: 2.4rem;
     font-weight: 500;
     color: #fff;
-}
+  }
 
-
-    a{
+  a {
     font-size: 1.6rem;
     font-weight: 500;
     color: #fff;
     text-decoration: none;
     display: block;
-    background: #1E1E1F;
+    background: #1e1e1f;
     padding: 12px 24px;
     margin-top: 20px;
     border-radius: 3px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
-    transition: .3s;
-}
+    transition: 0.3s;
+  }
 
-    a:hover{
+  a:hover {
     color: #d2d2d2;
     transform: scale(1.05);
-}
-
-
-`
+  }
+`;
