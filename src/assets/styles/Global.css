@@ -9,7 +9,7 @@
 
 body{
     width: 100%;
-    background: url('../../assets/bg-filter-refatored.jpeg') no-repeat center center;
+    background: url('../../assets/bg-filter.jpg') no-repeat center center;
     background-size: cover;
     height: 100vh;
 }
@@ -17,6 +17,6 @@ body{
 
 @media screen and (max-width: 767px){
     body{
-        background: url('../../assets/bg-mobile-refatored.jpg') no-repeat center center;
+        background: url('../../assets/bg-filter-mobile.jpg') no-repeat center center;
     }
 }
