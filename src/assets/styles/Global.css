@@ -18,5 +18,6 @@ body{
 @media screen and (max-width: 767px){
     body{
         background: url('../../assets/bg-filter-mobile.jpg') no-repeat center center;
+        background-size: cover;
     }
 }
